@@ -1,0 +1,4 @@
+.hintrc
+/server/node_modules/
+/server/.env
+/client/

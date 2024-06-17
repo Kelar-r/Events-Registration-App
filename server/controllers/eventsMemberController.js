@@ -4,7 +4,9 @@ const ApiError = require('../error/ApiError');
 class EventsMemberController {
     async addEventMember(req, res, next) {
         try {
-            const {name, email, eventsListId} = req.body
+            const {name, email} = req.query
+            const eventsListId = Number(req.query.eventsListId)
+
             const member = await Member.create({name, email})
             const eventsMember = await EventsMember.create({eventsListId: eventsListId, memberId: member.id})
             return res.json(eventsMember)

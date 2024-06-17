@@ -5,7 +5,7 @@ const eventcontroller = require('../controllers/eventController')
 
 router.post('/adding', eventcontroller.adding)
 router.get('/getALL', eventcontroller.getALL)
-router.get('/:id', eventcontroller.getId)
+router.get('/:id', eventcontroller.getEventId)
 router.delete('/del', eventcontroller.delete)
 
 

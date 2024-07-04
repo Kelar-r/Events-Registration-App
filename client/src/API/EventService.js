@@ -4,7 +4,7 @@ export default class EventService {
     static async getAll() {
         try {
             console.log(`${process.env.REACT_APP_API_URL}/event/getALL`)
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}event/getALL`)
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/event/getALL`)
             return response.data
         }
         catch (e) {

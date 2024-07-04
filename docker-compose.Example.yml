@@ -1,0 +1,38 @@
+version: '3.3'
+
+services:
+  server:
+    build: ./server
+    restart: always
+    ports:
+      - 5433:5432
+      - 5000:5000
+    networks:
+      - backend
+    extra_hosts:
+      - "postgresql:changeMe"
+    command: ["npm", "run", "dev"]
+
+
+  client:
+    build: ./client
+    restart: always
+    ports:
+      - 3000:3000
+      - 5001:5000
+    networks:
+      - frontend
+    extra_hosts:
+      - "server:changeMe"
+    command: ["npm", "run", "server"]
+    depends_on: 
+      - server
+
+networks:
+  backend:
+    enable_ipv6: false
+    driver: bridge
+
+  frontend:
+    enable_ipv6: false
+    driver: bridge
